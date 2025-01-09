@@ -36,7 +36,7 @@ class Triangle {
     
 
     //Constructor
-    Triangle(int tempx, int tempy, int tempr) {
+    Triangle(int tempx, int tempy) {
         x = tempx; //set the x cord
         y = tempy; //set the y cord
         
