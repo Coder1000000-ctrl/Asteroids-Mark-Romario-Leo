@@ -24,11 +24,7 @@ void draw() { // Happens constantly (screen refresh)
       theBall.display();
     }
     
-    //Old Loop
-    //for (int i = 0; i < ballGroup.size(); i++) {
-    //    ballGroup.get(i).display();
-    //    ballGroup.get(i).move();
-    //}
+
 }
 
 void mousePressed() {
@@ -42,10 +38,7 @@ void keyPressed() {
             ballGroup.remove(i);
         }
     }
-    // Inject infected object
-    else if (key =='j') {
-        ballGroup.add(new Ball(width/2, height/2, 50, true));
-    }
+
   
 }
 
@@ -105,5 +98,24 @@ class Ball {
     void checkCollision(Ball otherBall) {
         double distanceApart = dist(x, y, otherBall.x, otherBall.y);
         double threshold = r + otherBall.r;
+        
+        //Bounce the ball
+        if (distanceApart < threshold) {
+            //Store Ball 1's velocity
+            int tempdx = dx;
+            int tempdy = dy;
+            
+            // Ball 1 gets Velocity 2
+            dx = otherBall.dx;
+            dy = otherBall.dy;
+            
+            // Ball 2 gets Velocity 1
+            otherBall.dx = tempdx;
+            otherBall.dy = tempdy;
+
+            }
+        }
+        
+        
     }
-}
+    
