@@ -37,10 +37,12 @@ void keyPressed() {
         for (int i = ballGroup.size()-1; i >= 0; i--) {
             ballGroup.remove(i);
         }
+        ballGroup.add( new Ball(mouseX, mouseY, 20, false) );
+        ballGroup.add( new Ball(mouseX, mouseY, 20, false) );
+}
     }
 
   
-}
 
 
 class Ball {
@@ -48,7 +50,7 @@ class Ball {
     int dx, dy; //Speed or Velocity
     int cr, cg, cb; //RGB Values
     int grav; //Gravity
-    boolean infected;
+
 
     //Constructor
     Ball(int tempx, int tempy, int tempr, boolean tempinf) {
@@ -56,7 +58,6 @@ class Ball {
         y = tempy; //set the y cord
         r = tempr; //set the radius
         
-        infected = tempinf;
 
         //Set the colour
         cr = int( random(0,255));
@@ -70,14 +71,6 @@ class Ball {
     }
 
     void display() {
-      //Infection Properties
-        if (infected == true) {
-            cr = 255;
-            cg = 0;
-            cb = 0;
-            grav = -1;
-        }
-      
         fill(cr, cg, cb);
         circle(x,y,r*2);
     }
@@ -113,9 +106,11 @@ class Ball {
             otherBall.dx = tempdx;
             otherBall.dy = tempdy;
 
+
+            }
+
             }
         }
         
         
-    }
     
