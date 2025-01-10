@@ -2,8 +2,7 @@ Triangle[] triangleGroup;
 int pos = 0;
 
 void setup() { // Happens once at launch
-    size(1280, 720);
-    background(0);
+    
     triangleGroup = new Triangle[10000];
 }
 
@@ -19,7 +18,7 @@ void draw() { // Happens constantly (screen refresh)
 
 void mousePressed() {
     if(pos < triangleGroup.length){
-    triangleGroup[pos] = new Triangle(mouseX, mouseY, 100);
+    triangleGroup[pos] = new Triangle(mouseX, mouseY);
     pos++; //Next empty position
 }
 }
@@ -36,7 +35,7 @@ class Triangle {
     
 
     //Constructor
-    Triangle(int tempx, int tempy, int tempr) {
+    Triangle(int tempx, int tempy) {
         x = tempx; //set the x cord
         y = tempy; //set the y cord
         
@@ -52,6 +51,8 @@ class Triangle {
     void display() {
         stroke(255);
         fill(cr, cg, cb);
+        rotate(90);
+        
         triangle(x,y,x-20,y+50,x+20,y+50);
     }
 
