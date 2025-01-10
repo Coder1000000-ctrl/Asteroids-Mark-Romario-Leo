@@ -14,21 +14,16 @@ void draw() { // Happens constantly (screen refresh)
     for (Ball theBall : ballGroup) {
       theBall.move();
       
-      //Check against other objects in group
-      for (Ball otherBall : ballGroup) {
-        if(theBall != otherBall) {
-          theBall.checkCollision(otherBall);
-      }
-      }
+    //   //Check against other objects in group
+    //   for (Ball otherBall : ballGroup) {
+    //     if(theBall != otherBall) {
+    //       theBall.checkCollision(otherBall);
+    //   }
+    //   }
       
       theBall.display();
     }
     
-    //Old Loop
-    //for (int i = 0; i < ballGroup.size(); i++) {
-    //    ballGroup.get(i).display();
-    //    ballGroup.get(i).move();
-    //}
 }
 
 void mousePressed() {
@@ -41,13 +36,12 @@ void keyPressed() {
         for (int i = ballGroup.size()-1; i >= 0; i--) {
             ballGroup.remove(i);
         }
-    }
-    // Inject infected object
-    else if (key =='j') {
-        ballGroup.add(new Ball(width/2, height/2, 50, true));
-    }
-  
+        ballGroup.add( new Ball(mouseX, mouseY, 20, false) );
+        ballGroup.add( new Ball(mouseX, mouseY, 20, false) );
 }
+    }
+
+  
 
 
 class Ball {
@@ -55,7 +49,7 @@ class Ball {
     int dx, dy; //Speed or Velocity
     int cr, cg, cb; //RGB Values
     int grav; //Gravity
-    boolean infected;
+
 
     //Constructor
     Ball(int tempx, int tempy, int tempr, boolean tempinf) {
@@ -63,7 +57,6 @@ class Ball {
         y = tempy; //set the y cord
         r = tempr; //set the radius
         
-        infected = tempinf;
 
         //Set the colour
         cr = int( random(0,255));
@@ -77,14 +70,6 @@ class Ball {
     }
 
     void display() {
-      //Infection Properties
-        if (infected == true) {
-            cr = 255;
-            cg = 0;
-            cb = 0;
-            grav = -1;
-        }
-      
         fill(cr, cg, cb);
         circle(x,y,r*2);
     }
@@ -102,8 +87,27 @@ class Ball {
         }
     }
     
-    void checkCollision(Ball otherBall) {
-        double distanceApart = dist(x, y, otherBall.x, otherBall.y);
-        double threshold = r + otherBall.r;
-    }
-}
+    // void checkCollision(Ball otherBall) {
+    //     double distanceApart = dist(x, y, otherBall.x, otherBall.y);
+    //     double threshold = r + otherBall.r;
+        
+    //     //Bounce the ball
+    //     if (distanceApart < threshold) {
+    //         //Store Ball 1's velocity
+    //         int tempdx = dx;
+    //         int tempdy = dy;
+            
+    //         // Ball 1 gets Velocity 2
+    //         dx = otherBall.dx;
+    //         dy = otherBall.dy;
+            
+    //         // Ball 2 gets Velocity 1
+    //         otherBall.dx = tempdx;
+    //         otherBall.dy = tempdy;
+
+
+            }
+
+        
+        
+    
