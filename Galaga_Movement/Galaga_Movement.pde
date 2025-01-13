@@ -68,11 +68,12 @@ class Bullet {
     }
 
     void display() {
-        fill(0,255,0);
+        fill(41,255,0);
         rectMode(CENTER);
-        rect(bulletx, bullety, 3, 12);
+        rect(bulletx, bullety, 5, 35);
     }
     void move() {
+        
         bullety = bullety - 10;
     }
 }
