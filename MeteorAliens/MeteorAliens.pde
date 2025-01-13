@@ -6,7 +6,12 @@ void setup() { // Happens once at launch
     size(1400, 800);
     background(200,200,200);
     ballGroup = new ArrayList<Ball>();
+    int i = 0;
+    int v = 800;
+    while(i <= v) {
     ballGroup.add( new Ball(mouseX, mouseY, 50, false) );
+    i = i + 5;
+}
 }
 
 void draw() { // Happens constantly (screen refresh)
@@ -21,8 +26,15 @@ void draw() { // Happens constantly (screen refresh)
           theBall.checkCollision(otherBall);
       }
       }
-      
+    int i = 0;
+    int v = 10;
+    while(i <= v) {
       theBall.display();
+      tempx = x + 5;
+      i++;
+
+
+    }
     }
     
 }
