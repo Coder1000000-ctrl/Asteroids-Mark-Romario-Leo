@@ -3,11 +3,14 @@ ArrayList<Ball> ballGroup;
 //int pos = 0;
 
 void setup() { // Happens once at launch
-    size(1680, 720);
+    size(1400, 800);
     background(200,200,200);
     ballGroup = new ArrayList<Ball>();
+
     ballGroup.add( new Ball(mouseX, mouseY, 50, false) );
+   
 }
+
 
 void draw() { // Happens constantly (screen refresh)
     background(200,200,200);
@@ -20,9 +23,14 @@ void draw() { // Happens constantly (screen refresh)
         if(theBall != otherBall) {
           theBall.checkCollision(otherBall);
       }
-      }
-      
-      theBall.display();
+
+      int x = 50;
+      int y = 50;
+
+    theBall.display();
+
+
+    }
     }
     
 }
@@ -53,8 +61,8 @@ class Ball {
 
     //Constructor
     Ball(int tempx, int tempy, int tempr, boolean tempinf) {
-        x = tempx; //set the x cord
-        y = tempy; //set the y cord
+        x = 50; //set the x cord
+        y = 50; //set the y cord
         r = tempr; //set the radius
         
 
@@ -75,9 +83,9 @@ class Ball {
     }
 
     // void move() {
-    //     y = y + dy;
-    //     x = x + dx;
-    //     dy = dy - grav;
+    //     y = y + 5;
+    //     x = x + 5;
+    //     //dy = dy - grav;
 
     //     if (y >= height - r || y <= 0+r) {
     //         dy = dy * -1;
