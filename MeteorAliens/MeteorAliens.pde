@@ -3,10 +3,15 @@ ArrayList<Ball> ballGroup;
 //int pos = 0;
 
 void setup() { // Happens once at launch
-    size(1680, 720);
+    size(1400, 800);
     background(200,200,200);
     ballGroup = new ArrayList<Ball>();
+    int i = 0;
+    int v = 800;
+    while(i <= v) {
     ballGroup.add( new Ball(mouseX, mouseY, 50, false) );
+    i = i + 5;
+}
 }
 
 void draw() { // Happens constantly (screen refresh)
@@ -21,8 +26,15 @@ void draw() { // Happens constantly (screen refresh)
           theBall.checkCollision(otherBall);
       }
       }
-      
+    int i = 0;
+    int v = 10;
+    while(i <= v) {
       theBall.display();
+      tempx = x + 5;
+      i++;
+
+
+    }
     }
     
 }
@@ -53,8 +65,8 @@ class Ball {
 
     //Constructor
     Ball(int tempx, int tempy, int tempr, boolean tempinf) {
-        x = tempx; //set the x cord
-        y = tempy; //set the y cord
+        x = 50; //set the x cord
+        y = 50; //set the y cord
         r = tempr; //set the radius
         
 

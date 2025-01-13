@@ -1,6 +1,7 @@
 Ball[] ballGroup;
 int pos = 0;
 
+
 void setup() { // Happens once at launch
     size(1280, 720);
     background(200,200,200);
