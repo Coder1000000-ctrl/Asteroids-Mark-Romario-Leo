@@ -53,8 +53,8 @@ class Ball {
 
     //Constructor
     Ball(int tempx, int tempy, int tempr, boolean tempinf) {
-        x = tempx; //set the x cord
-        y = tempy; //set the y cord
+        x = 50; //set the x cord
+        y = 50; //set the y cord
         r = tempr; //set the radius
         
 
