@@ -2,6 +2,8 @@ ArrayList<Bullet> bulletGroup;
 float x;
 float y;
 int ammo = 1;
+int moveState = 0;
+int moveStep = 10;
 
 void setup() {
     size(1400, 800);
@@ -13,6 +15,7 @@ void setup() {
 
 void draw() { // Happens constantly (screen refresh)
     background(0);
+    x = x + moveState;
 
     display();
     for (Bullet theBullet : bulletGroup) {
@@ -46,12 +49,12 @@ void keyPressed(){
     
     }
      if (key == 'd') {
-        x= x+10;
+        moveState = moveStep;
 
     }
 
-     if (key == 'a') {
-        x=x-10;
+    if (key == 'a') {
+        moveState = -1*moveStep;
         
     }
     if (keyCode == UP ){
@@ -62,12 +65,12 @@ void keyPressed(){
         }
     }
     if (keyCode == RIGHT) {
-        x= x+10;
+        moveState = moveStep;
 
     }
 
     if (keyCode == LEFT) {
-        x=x-10;
+        moveState = -1*moveStep;
         
     }
 
