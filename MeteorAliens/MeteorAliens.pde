@@ -6,13 +6,11 @@ void setup() { // Happens once at launch
     size(1400, 800);
     background(200,200,200);
     ballGroup = new ArrayList<Ball>();
-    int i = 0;
-    int v = 800;
-    while(i <= v) {
+
     ballGroup.add( new Ball(mouseX, mouseY, 50, false) );
-    i = i + 5;
+   
 }
-}
+
 
 void draw() { // Happens constantly (screen refresh)
     background(200,200,200);
@@ -25,16 +23,17 @@ void draw() { // Happens constantly (screen refresh)
         if(theBall != otherBall) {
           theBall.checkCollision(otherBall);
       }
+
+int x, y;
+x = 50;
+
+        theBall.display();
+        x = x +50;
+        theBall.display();
+
+
+    
       }
-    int i = 0;
-    int v = 10;
-    while(i <= v) {
-      theBall.display();
-      tempx = x + 5;
-      i++;
-
-
-    }
     }
     
 }
@@ -70,6 +69,9 @@ class Ball {
         r = tempr; //set the radius
         
 
+
+        
+
         //Set the colour
         cr = int( random(0,255));
         cg = int( random(0,255));
@@ -87,9 +89,9 @@ class Ball {
     }
 
     // void move() {
-    //     y = y + dy;
-    //     x = x + dx;
-    //     dy = dy - grav;
+    //     y = y + 5;
+    //     x = x + 5;
+    //     //dy = dy - grav;
 
     //     if (y >= height - r || y <= 0+r) {
     //         dy = dy * -1;

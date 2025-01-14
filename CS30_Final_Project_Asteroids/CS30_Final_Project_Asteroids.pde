@@ -1,42 +1,45 @@
-Ball[] ballGroup;
+Tri[] triGroup;
 int pos = 0;
 
 
 void setup() { // Happens once at launch
-    size(1280, 720);
+    size(1400, 800);
     background(200,200,200);
-    ballGroup = new Ball[100];
+    triGroup = new Tri[100];
+
 }
 
 void draw() { // Happens constantly (screen refresh)
     background(200,200,200);
 
     for (int i = 0; i < pos; i++) {
-        ballGroup[i].display();
-        ballGroup[i].move();
+        triGroup[i].display();
     }
 
 }
-
 void mousePressed() {
-    if(pos < ballGroup.length) {
-        ballGroup[pos] = new Ball(mouseX, mouseY, 70);
+    if(pos < triGroup.length) {
+        triGroup[pos] = new Tri(mouseX, mouseY, 70);
         pos++; //Next empty position
     }
 }
 
 
-class Ball {
+class Tri {
     int x, y, r;
     int dx, dy; //Speed or Velocity
     int cr, cg, cb; //RGB Values
     int grav; //Gravity
 
     //Constructor
-    Ball(int tempx, int tempy, int tempr) {
+    Tri(int tempx, int tempy, int tempr) {
         x = tempx; //set the x cord
         y = tempy; //set the y cord
         r = tempr; //set the radius
+
+        
+
+
 
         //Set the colour
         cr = int( random(0,255));
@@ -51,7 +54,7 @@ class Ball {
 
     void display() {
         fill(cr, cg, cb);
-        circle(x,y,r*2);
+        triangle(x,y,x+10,y+10,x-10,y+10);
     }
 
     void move() {
