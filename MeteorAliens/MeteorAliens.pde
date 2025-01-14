@@ -24,13 +24,16 @@ void draw() { // Happens constantly (screen refresh)
           theBall.checkCollision(otherBall);
       }
 
-      int x = 50;
-      int y = 50;
+int x, y;
+x = 50;
 
-    theBall.display();
+        theBall.display();
+        x = x +50;
+        theBall.display();
 
 
-    }
+    
+      }
     }
     
 }
@@ -64,6 +67,9 @@ class Ball {
         x = 50; //set the x cord
         y = 50; //set the y cord
         r = tempr; //set the radius
+        
+
+
         
 
         //Set the colour
