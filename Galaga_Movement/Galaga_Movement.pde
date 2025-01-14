@@ -1,6 +1,7 @@
 ArrayList<Bullet> bulletGroup;
 float x;
 float y;
+int ammo = 1;
 
 void setup() {
     size(1400, 800);
@@ -19,6 +20,9 @@ void draw() { // Happens constantly (screen refresh)
    
      theBullet.display();
     }
+    if (millis() % 600 >= 0 && millis() % 600 <= 20) {
+        ammo = 1;
+    }  
 }
 
 
@@ -28,13 +32,18 @@ void display() {
     stroke(255);
     fill(0);
     rectMode(CENTER);
-    triangle(x, y, x-20, y+60, x+20, y+60);   
+    triangle(x, y, x-20, y+60, x+20, y+60); 
+    
 }
 
 void keyPressed(){
     if (key == 'w' ){
-        bulletGroup.add(new Bullet(x,y));
+        if (ammo > 0) {
 
+        bulletGroup.add(new Bullet(x,y));
+        ammo--;
+        }
+    
     }
      if (key == 'd') {
         x= x+10;
@@ -45,9 +54,13 @@ void keyPressed(){
         x=x-10;
         
     }
-    // if (keyCode == UP ){
-        
-    // }
+    if (keyCode == UP ){
+        if (ammo > 0) {
+
+        bulletGroup.add(new Bullet(x,y));
+        ammo--;
+        }
+    }
     if (keyCode == RIGHT) {
         x= x+10;
 
