@@ -3,7 +3,7 @@ float x;
 float y;
 int ammo = 1;
 int moveState = 0;
-int moveStep = 10;
+int moveStep = 5;
 
 void setup() {
     size(1400, 800);
@@ -75,7 +75,25 @@ void keyPressed(){
     }
 
 }
+void keyReleased() {
+    if (key == 'd') {
+        moveState = 0;
 
+    }
+
+    if (key == 'a') {
+        moveState = 0;
+}
+if (keyCode == RIGHT) {
+        moveState = 0;
+
+    }
+
+    if (keyCode == LEFT) {
+        moveState = 0;
+        
+    }
+}
 class Bullet {
     float bulletx, bullety;
     Bullet(float tempx, float tempy) {
