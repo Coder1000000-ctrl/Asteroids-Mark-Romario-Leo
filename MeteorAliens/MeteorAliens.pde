@@ -137,6 +137,24 @@ class Ball {
     }
     }
 
+    class EnemyFire {
+    float bulletx, bullety;
+    EnemyFire(float tempx, float tempy) {
+        bulletx = tempx; //set the x cord
+        bullety = tempy; //set the y cord
+    }
+
+    void display() {
+        fill(41,255,0);
+        rectMode(CENTER);
+        rect(bulletx, bullety, 5, 35);
+    }
+    void move() {
+        
+        bullety = bullety - 10;
+    }
+}
+
     // void move() {
     //     y = y + 5;
     //     x = x + 5;
