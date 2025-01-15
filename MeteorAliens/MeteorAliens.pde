@@ -3,11 +3,14 @@ ArrayList<Ball> ballGroup;
 //int pos = 0;
 
 void setup() { // Happens once at launch
+    int x = 150;
+    int y = 50;
+    
     size(1400, 800);
-    background(200,200,200);
+    background(0);
     ballGroup = new ArrayList<Ball>();
 
-    ballGroup.add( new Ball(mouseX, mouseY, 50, false) );
+    ballGroup.add( new Ball(x, y, 50, false) );
    
 }
 
@@ -21,23 +24,27 @@ void draw() { // Happens constantly (screen refresh)
       //Check against other objects in group
       for (Ball otherBall : ballGroup) {
         if(theBall != otherBall) {
-          theBall.checkCollision(otherBall);
+          //theBall.checkCollision(otherBall);
       }
 
-      int x = 50;
-      int y = 50;
+int x = 100;
+int y = 50;
 
-    theBall.display();
+        theBall.display();
+        x = x + 100;
+        theBall.display();
 
 
-    }
+
+    
+      }
     }
     
 }
 
 void mousePressed() {
  // ballGroup[pos] = new Ball(mouseX, mouseY, 70);
-    ballGroup.add( new Ball(mouseX, mouseY, 50, false) );
+    ballGroup.add( new Ball(50, 50, 50, false) );
 }
 
 void keyPressed() {
@@ -62,14 +69,18 @@ class Ball {
     //Constructor
     Ball(int tempx, int tempy, int tempr, boolean tempinf) {
         x = 50; //set the x cord
+        // x = x +50;
         y = 50; //set the y cord
         r = tempr; //set the radius
         
 
+
+        
+
         //Set the colour
-        cr = int( random(0,255));
-        cg = int( random(0,255));
-        cb = int( random(0,255));
+        cr = 0;
+        cg = 0;
+        cb = 0;
 
         // //Set Velocity & Gravity
         // dx = int( random(-10,10));
@@ -78,8 +89,15 @@ class Ball {
     }
 
     void display() {
+        stroke(255);
         fill(cr, cg, cb);
         circle(x,y,r*2);
+        int x = 50;
+        circle(x+ 100,y,r*2);
+
+
+
+    }
     }
 
     // void move() {
@@ -95,10 +113,10 @@ class Ball {
     //     }
     // }
     
-    void checkCollision(Ball otherBall) {
-        double distanceApart = dist(x, y, otherBall.x, otherBall.y);
-        double threshold = r + otherBall.r;
-    }
+    // void checkCollision(Ball otherBall) {
+    //     double distanceApart = dist(x, y, otherBall.x, otherBall.y);
+    //     double threshold = r + otherBall.r;
+    // }
         
     //     //Bounce the ball
     //     if (distanceApart < threshold) {
@@ -115,7 +133,7 @@ class Ball {
     //         otherBall.dy = tempdy;
 
 
-            }
+            
 
         
         

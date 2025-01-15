@@ -1,6 +1,11 @@
 ArrayList<Bullet> bulletGroup;
 float x;
 float y;
+int ammo = 1;
+int moveState = 0;
+int moveStep = 5;
+boolean shootState = false;
+
 
 void setup() {
     size(1400, 800);
@@ -12,6 +17,13 @@ void setup() {
 
 void draw() { // Happens constantly (screen refresh)
     background(0);
+    x = x + moveState;
+    if (shootState){
+        if (ammo > 0) {
+        bulletGroup.add(new Bullet(x,y));
+        ammo--;
+        }
+    }
 
     display();
     for (Bullet theBullet : bulletGroup) {
@@ -19,6 +31,9 @@ void draw() { // Happens constantly (screen refresh)
    
      theBullet.display();
     }
+    if (millis() % 600 >= 0 && millis() % 600 <= 10) {
+        ammo = 1;
+    }  
 }
 
 
@@ -28,38 +43,71 @@ void display() {
     stroke(255);
     fill(0);
     rectMode(CENTER);
-    triangle(x, y, x-20, y+60, x+20, y+60);   
+    triangle(x, y, x-20, y+60, x+20, y+60); 
+    
 }
 
 void keyPressed(){
     if (key == 'w' ){
-        bulletGroup.add(new Bullet(x,y));
-
+        
+            shootState = true;
+        
+        
+    
     }
      if (key == 'd') {
-        x= x+10;
+        moveState = moveStep;
 
     }
 
-     if (key == 'a') {
-        x=x-10;
+    if (key == 'a') {
+        moveState = -1*moveStep;
         
     }
-    // if (keyCode == UP ){
+    if (keyCode == UP ){
         
-    // }
+
+        shootState = true;
+        
+    }
     if (keyCode == RIGHT) {
-        x= x+10;
+        moveState = moveStep;
 
     }
 
     if (keyCode == LEFT) {
-        x=x-10;
+        moveState = -1*moveStep;
         
     }
 
 }
+void keyReleased() {
+    if (key == 'w' ){
+            shootState = false;
+    
+    }
+    if (key == 'd') {
+        moveState = 0;
 
+    }
+
+    if (key == 'a') {
+        moveState = 0;
+}
+if (keyCode == UP) {
+        shootState = false;
+
+    }
+if (keyCode == RIGHT) {
+        moveState = 0;
+
+    }
+
+    if (keyCode == LEFT) {
+        moveState = 0;
+        
+    }
+}
 class Bullet {
     float bulletx, bullety;
     Bullet(float tempx, float tempy) {
