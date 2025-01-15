@@ -3,7 +3,9 @@ float x;
 float y;
 int ammo = 1;
 int moveState = 0;
-int moveStep = 10;
+int moveStep = 5;
+boolean shootState = false;
+
 
 void setup() {
     size(1400, 800);
@@ -16,6 +18,12 @@ void setup() {
 void draw() { // Happens constantly (screen refresh)
     background(0);
     x = x + moveState;
+    if (shootState){
+        if (ammo > 0) {
+        bulletGroup.add(new Bullet(x,y));
+        ammo--;
+        }
+    }
 
     display();
     for (Bullet theBullet : bulletGroup) {
@@ -23,7 +31,7 @@ void draw() { // Happens constantly (screen refresh)
    
      theBullet.display();
     }
-    if (millis() % 600 >= 0 && millis() % 600 <= 20) {
+    if (millis() % 600 >= 0 && millis() % 600 <= 10) {
         ammo = 1;
     }  
 }
@@ -41,11 +49,10 @@ void display() {
 
 void keyPressed(){
     if (key == 'w' ){
-        if (ammo > 0) {
-
-        bulletGroup.add(new Bullet(x,y));
-        ammo--;
-        }
+        
+            shootState = true;
+        
+        
     
     }
      if (key == 'd') {
@@ -58,11 +65,10 @@ void keyPressed(){
         
     }
     if (keyCode == UP ){
-        if (ammo > 0) {
+        
 
-        bulletGroup.add(new Bullet(x,y));
-        ammo--;
-        }
+        shootState = true;
+        
     }
     if (keyCode == RIGHT) {
         moveState = moveStep;
@@ -75,7 +81,33 @@ void keyPressed(){
     }
 
 }
+void keyReleased() {
+    if (key == 'w' ){
+            shootState = false;
+    
+    }
+    if (key == 'd') {
+        moveState = 0;
 
+    }
+
+    if (key == 'a') {
+        moveState = 0;
+}
+if (keyCode == UP) {
+        shootState = false;
+
+    }
+if (keyCode == RIGHT) {
+        moveState = 0;
+
+    }
+
+    if (keyCode == LEFT) {
+        moveState = 0;
+        
+    }
+}
 class Bullet {
     float bulletx, bullety;
     Bullet(float tempx, float tempy) {

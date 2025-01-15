@@ -1,46 +1,44 @@
-Tri[] triGroup;
-int pos = 0;
+Life[] triGroup;
+// int pos = 0;
 
 
 void setup() { // Happens once at launch
     size(1400, 800);
-    background(200,200,200);
-    triGroup = new Tri[100];
+    background(0);
+    triGroup = new Life[100];
+    triGroup[i].display();
 
 }
 
 void draw() { // Happens constantly (screen refresh)
-    background(200,200,200);
-
-    for (int i = 0; i < pos; i++) {
-        triGroup[i].display();
-    }
+    background(0,0,0);
 
 }
-void mousePressed() {
-    if(pos < triGroup.length) {
-        triGroup[pos] = new Tri(mouseX, mouseY, 70);
-        pos++; //Next empty position
-    }
-}
+// void mousePressed() {
+//     if(pos < triGroup.length) {
+//         triGroup[pos] = new Life(mouseX, mouseY, 70);
+//         pos++; //Next empty position
+//     }
+// }
 
 
-class Tri {
+class Life {
     int x, y, r;
+    int x1, x2, x3, y1;
     int dx, dy; //Speed or Velocity
     int cr, cg, cb; //RGB Values
     int grav; //Gravity
 
     //Constructor
-    Tri(int tempx, int tempy, int tempr) {
+    Life(int tempx, int tempy, int tempr) {
         x = tempx; //set the x cord
         y = tempy; //set the y cord
         r = tempr; //set the radius
 
-        
-
-
-
+        x1 = 170;
+        y1 = 40;
+        x2 = x1-30;
+        x3 = x2-30;
         //Set the colour
         cr = int( random(0,255));
         cg = int( random(0,255));
@@ -53,8 +51,18 @@ class Tri {
     }
 
     void display() {
-        fill(cr, cg, cb);
-        triangle(x,y,x+10,y+10,x-10,y+10);
+        stroke(255);
+        fill(0);
+        triangle(x1, y1, x1+10, y1+20, x1-10, y1+20);
+
+        stroke(255);
+        fill(0);
+        triangle(x2, y1, x2+10, y1+20, x2-10, y1+20);
+
+        stroke(255);
+        fill(0);
+        triangle(x3, y1, x3+10, y1+20, x3-10, y1+20);
+
     }
 
     void move() {
