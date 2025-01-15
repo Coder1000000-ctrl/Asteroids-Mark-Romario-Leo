@@ -1,5 +1,5 @@
 Life[] triGroup;
-int pos = 0;
+// int pos = 0;
 
 
 void setup() { // Happens once at launch
@@ -13,16 +13,13 @@ void setup() { // Happens once at launch
 void draw() { // Happens constantly (screen refresh)
     background(0,0,0);
 
-    for (int i = 0; i < pos; i++) {
-    }
-
 }
-void mousePressed() {
-    if(pos < triGroup.length) {
-        triGroup[pos] = new Life(mouseX, mouseY, 70);
-        pos++; //Next empty position
-    }
-}
+// void mousePressed() {
+//     if(pos < triGroup.length) {
+//         triGroup[pos] = new Life(mouseX, mouseY, 70);
+//         pos++; //Next empty position
+//     }
+// }
 
 
 class Life {
