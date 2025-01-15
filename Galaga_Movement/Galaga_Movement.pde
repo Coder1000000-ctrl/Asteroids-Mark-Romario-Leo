@@ -31,7 +31,7 @@ void draw() { // Happens constantly (screen refresh)
    
      theBullet.display();
     }
-    if (millis() % 600 >= 0 && millis() % 600 <= 20) {
+    if (millis() % 600 >= 0 && millis() % 600 <= 10) {
         ammo = 1;
     }  
 }
