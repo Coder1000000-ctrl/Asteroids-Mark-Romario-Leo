@@ -9,7 +9,7 @@ void setup() { // Happens once at launch
     int y2 =50;
     
     size(1400, 800);
-    background(0);
+    background(0,0,0);
     ballGroup = new ArrayList<Ball>();
 
     ballGroup.add( new Ball(x, x2, y, y2,  50, false) );
@@ -18,7 +18,7 @@ void setup() { // Happens once at launch
 
 
 void draw() { // Happens constantly (screen refresh)
-    background(200,200,200);
+    background(0,0,0);
 
     for (Ball theBall : ballGroup) {
     //   theBall.move();
@@ -85,8 +85,8 @@ class Ball {
         
 
         //Set the colour
-        cr = 0;
-        cg = 0;
+        cr = 255;
+        cg = 255;
         cb = 0;
 
         // //Set Velocity & Gravity
@@ -145,13 +145,13 @@ class Ball {
     }
 
     void display() {
-        fill(41,255,0);
+        fill(128, 0, 128);
         rectMode(CENTER);
         rect(bulletx, bullety, 5, 35);
     }
     void move() {
         
-        bullety = bullety - 10;
+        bullety = bullety + 10;
     }
 }
 
