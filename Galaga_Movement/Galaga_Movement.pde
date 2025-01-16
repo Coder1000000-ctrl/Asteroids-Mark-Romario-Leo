@@ -18,6 +18,12 @@ void setup() {
 void draw() { // Happens constantly (screen refresh)
     background(0);
     x = x + moveState;
+    if (x>width-20){
+        x = width-20;
+    }
+    if (x<20){
+        x = 20;
+    }
     if (shootState){
         if (ammo > 0) {
         bulletGroup.add(new Bullet(x,y));
