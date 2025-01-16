@@ -1,4 +1,6 @@
 ArrayList<Ball> ballGroup;
+ArrayList<EnemyFire> EnemyFireGroup;
+int enemyAmmo = 1;
 //Ball[] ballGroup;
 //int pos = 0;
 
@@ -13,6 +15,7 @@ void setup() { // Happens once at launch
     ballGroup = new ArrayList<Ball>();
 
     ballGroup.add( new Ball(x, x2, y, y2,  50, false) );
+    EnemyFireGroup = new ArrayList<EnemyFire>();
    
 }
 
@@ -29,20 +32,35 @@ void draw() { // Happens constantly (screen refresh)
           //theBall.checkCollision(otherBall);
       }
 
-int x = 150;
-int y = 50;
+    
+
+      if (millis() % 999 >= 0 && millis() % 999 <= 15) {
+        enemyAmmo = 1;
+    }  
+      if (enemyAmmo >0){
+      EnemyFireGroup.add(new EnemyFire(x, y));
+      enemyAmmo--;
+      }
+      for (EnemyFire theEnemyFire : EnemyFireGroup) {
+     theEnemyFire.move();
+   
+     theEnemyFire.display();
+    }
+
+double x = random(150, 1100);
+double y = random(50, 250);
+
 
         theBall.display();
-        // x = x + 100;
-        // theBall.display();
+
 
 
 
     
       }
     }
-    
 }
+
 
 void mousePressed() {
  // ballGroup[pos] = new Ball(mouseX, mouseY, 70);
@@ -66,14 +84,14 @@ void keyPressed() {
 
 
 class Ball {
-    int x, x2, y, y2,  r;
-    int dx, dy; //Speed or Velocity
-    int cr, cg, cb; //RGB Values
-    int grav; //Gravity
+    double x, x2, y, y2,  r;
+    double dx, dy; //Speed or Velocity
+    double cr, cg, cb; //RGB Values
+    double grav; //Gravity
 
 
     //Constructor
-    Ball(int tempx, int tempx2, int tempy, int tempy2, int tempr, boolean tempinf) {
+    Ball(double tempx, double tempx2, double tempy, double tempy2, double tempr, boolean tempinf) {
         x = 50; //set the x cord
         x2 = 50;
         y = 50; //set the y cord
@@ -151,7 +169,7 @@ class Ball {
     }
     void move() {
         
-        bullety = bullety + 10;
+        bullety = bullety + 5;
     }
 }
 
