@@ -30,7 +30,6 @@ void draw() { // Happens constantly (screen refresh)
         ammo--;
         }
     }
-
     display();
     for (Bullet theBullet : bulletGroup) {
      theBullet.move();
@@ -55,79 +54,58 @@ void display() {
 
 void keyPressed(){
     if (key == 'w' ){
-        
-            shootState = true;
-        
-        
-    
+        shootState = true;
     }
      if (key == 'd') {
         moveState = moveStep;
-
     }
-
     if (key == 'a') {
-        moveState = -1*moveStep;
-        
+        moveState = -1*moveStep; 
     }
-    if (keyCode == UP ){
-        
-
+    if (keyCode == UP ){  
         shootState = true;
-        
     }
     if (keyCode == RIGHT) {
         moveState = moveStep;
-
     }
-
     if (keyCode == LEFT) {
         moveState = -1*moveStep;
-        
     }
-
 }
+
 void keyReleased() {
     if (key == 'w' ){
-            shootState = false;
-    
+        shootState = false;
     }
     if (key == 'd') {
         moveState = 0;
-
     }
-
     if (key == 'a') {
         moveState = 0;
-}
-if (keyCode == UP) {
+    }
+    if (keyCode == UP) {
         shootState = false;
-
     }
-if (keyCode == RIGHT) {
+    if (keyCode == RIGHT) {
         moveState = 0;
-
     }
-
     if (keyCode == LEFT) {
         moveState = 0;
-        
     }
 }
+
 class Bullet {
     float bulletx, bullety;
     Bullet(float tempx, float tempy) {
         bulletx = tempx; //set the x cord
         bullety = tempy; //set the y cord
     }
-
     void display() {
         fill(41,255,0);
         rectMode(CENTER);
         rect(bulletx, bullety, 5, 35);
     }
     void move() {
-        
         bullety = bullety - 10;
     }
 }
