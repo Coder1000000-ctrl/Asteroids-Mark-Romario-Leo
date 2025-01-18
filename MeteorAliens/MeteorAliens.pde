@@ -1,8 +1,8 @@
 ArrayList<Ball> ballGroup;
 ArrayList<EnemyFire> EnemyFireGroup;
 int enemyAmmo = 1;
-int[] numsx = null;
-int[] numsy = null;
+int[] numsx = new int[6];
+int[] numsy = new int[2];
 int cordx;
 int cordy;
 //Ball[] ballGroup;
@@ -16,8 +16,6 @@ void setup() { // Happens once at launch
     int x2 = 150;
     int y2 =50;
 
-numsx = new int[8];
-numsy = new int[3];
 int[] numsx = {150, 350, 550, 750, 950, 1150};
 int[] numsy = {50, 250};
 
@@ -29,15 +27,13 @@ int[] numsy = {50, 250};
 
     ballGroup.add( new Ball(x, x2, y, y2,  50, false) );
     EnemyFireGroup = new ArrayList<EnemyFire>();
-
    
 }
-
 
 void draw() { // Happens constantly (screen refresh)
     background(0,0,0);
 int randx = (int)(Math.random()*6);
-int randy = (int)(Math.random()*3);
+int randy = (int)(Math.random()*2);
 cordx = numsx[randx];
 cordy = numsy[randy];
 
@@ -49,8 +45,6 @@ cordy = numsy[randy];
         if(theBall != otherBall) {
           //theBall.checkCollision(otherBall);
       }
-
-    
 
       if (millis() % 999 >= 0 && millis() % 999 <= 15) {
         enemyAmmo = 1;
@@ -73,28 +67,6 @@ cordy = numsy[randy];
     }
 }
 
-
-// void mousePressed() {
-//  // ballGroup[pos] = new Ball(mouseX, mouseY, 70);
-//     int x = 150;
-//     int y = 50;
-//     int x2 = 150;
-//     int y2 =50;
-//     ballGroup.add( new Ball(x, x2, y, y2,  50, false) );
-// }
-
-void keyPressed() {
-    if (key == 'c') {
-        for (int i = ballGroup.size()-1; i >= 0; i--) {
-            ballGroup.remove(i);
-        }
-
-}
-    }
-
-  
-
-
 class Ball {
     int cirx, x2, ciry, y2,  r;
     int dx, dy; //Speed or Velocity
@@ -111,18 +83,11 @@ class Ball {
         r = tempr; //set the radius
         
 
-
-        
-
         //Set the colour
         cr = 255;
         cg = 255;
         cb = 0;
 
-        // //Set Velocity & Gravity
-        // dx = int( random(-10,10));
-        // dy = int( random(-10,10));
-        // grav = 0;
     }
 
     void display() {
@@ -132,38 +97,22 @@ class Ball {
   
         //Row 1
         circle(cirx+ 100,ciry,r*2);
-        //circle(cirx+ 200,ciry,r*2);
         circle(cirx+ 300,ciry,r*2);
-        //circle(cirx+ 400,ciry,r*2);
         circle(cirx+ 500,ciry,r*2);
-        //circle(cirx+ 600,ciry,r*2);
         circle(cirx+ 700,ciry,r*2);
-        //circle(cirx+ 800,ciry,r*2);
         circle(cirx+ 900,ciry,r*2);
-        //circle(cirx+ 1000,ciry,r*2);
         circle(cirx+ 1100,ciry,r*2);
-        //circle(cirx+ 1200,ciry,r*2);
-        //circle(cirx+ 1300,ciry,r*2);
+     
 
         //Row 2
-        //circle(cirx,ciry+150,r*2);
+    
         circle(cirx+ 100,ciry +150,r*2);
-        //circle(cirx+ 200,ciry +150,r*2);
         circle(cirx+ 300,ciry +150,r*2);
-        //circle(cirx+ 400,ciry +150,r*2);
         circle(cirx+ 500,ciry +150,r*2);
-        //circle(cirx+ 600,ciry +150,r*2);
         circle(cirx+ 700,ciry +150,r*2);
-        //circle(cirx+ 800,ciry +150,r*2);
         circle(cirx+ 900,ciry +150,r*2);
-        //circle(cirx+ 1000,ciry +150,r*2);
         circle(cirx+ 1100,ciry +150,r*2);
-        //circle(cirx+ 1200,ciry +150,r*2);
-        //circle(cirx+ 1300,ciry +150,r*2);
-
-
-
-
+  
     }
     }
 
@@ -185,41 +134,3 @@ class Ball {
     }
 }
 
-    // void move() {
-    //     y = y + 5;
-    //     x = x + 5;
-    //     //dy = dy - grav;
-
-    //     if (y >= height - r || y <= 0+r) {
-    //         dy = dy * -1;
-    //     }
-    //     if (x >= width-r || x <= 0+r) {
-    //         dx = dx * -1;
-    //     }
-    // }
-    
-    // void checkCollision(Ball otherBall) {
-    //     double distanceApart = dist(x, y, otherBall.x, otherBall.y);
-    //     double threshold = r + otherBall.r;
-    // }
-        
-    //     //Bounce the ball
-    //     if (distanceApart < threshold) {
-    //         //Store Ball 1's velocity
-    //         int tempdx = dx;
-    //         int tempdy = dy;
-            
-    //         // Ball 1 gets Velocity 2
-    //         dx = otherBall.dx;
-    //         dy = otherBall.dy;
-            
-    //         // Ball 2 gets Velocity 1
-    //         otherBall.dx = tempdx;
-    //         otherBall.dy = tempdy;
-
-
-            
-
-        
-        
-    
