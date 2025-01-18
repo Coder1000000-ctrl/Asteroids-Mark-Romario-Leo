@@ -48,9 +48,6 @@ void draw() { // Happens constantly (screen refresh)
     display();
     for (Bullet theBullet : bulletGroup) {
      theBullet.move();
-     for (Ball otherBall : ballGroup) {
-          theBullet.checkCollision(otherBall);
-      }
    
      theBullet.display();
     }
@@ -75,7 +72,6 @@ void draw() { // Happens constantly (screen refresh)
    
      theEnemyFire.display();
 }
-
 }
 
 
